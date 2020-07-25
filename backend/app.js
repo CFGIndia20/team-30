@@ -52,7 +52,8 @@ app.get("/slots",function(req,res)
 {
 	conn.query("select * from batch,slot where batch.slot_id=slot.id",function(err,result)
 	{
-		res.send(result);
+		//  res.send(result);
+		 res.render("slots.ejs",{result:result});
 	});
 });
 app.post("/slots",function(req,res)
@@ -63,9 +64,12 @@ app.get("/profile",isLoggedIn,function(req,res)
 {
     res.send({user:req.user});
 });
+
 app.get('/login', function(req, res) {
 	res.render('login.ejs', { message: req.flash("Welcome") });
 });
+
+
 
 app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/profile', 

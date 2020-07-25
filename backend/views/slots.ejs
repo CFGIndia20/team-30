@@ -18,16 +18,28 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Time</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                        <th scope='col'>Trainer's Id </th>
+                        <th scope='col'>Venue </th>
                         <th scope="col">Select</th>
                       </tr>
                     </thead>
                     <tbody>
+                        <% result.forEach(function(result){   %>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>12:30-1:30</td>
+                        <th scope="row"><%= result.id %></th>
+                        <td><%= result.start_date %></td>
+                        <td><%= result.start_time %></td>
+                        <td><%= result.end_time %></td>
+                       <td><%= result.trainer_id %></td>
+                       <td><%= result.venue %></td>
+                        <form id="slots" method="POST" action="/slots">
                         <td><button type="button" class="btn btn-warning">Select</button></td>
+                        </form>
                       </tr>
+                      <%  }); %>
                     </tbody>
                 </table>                    
             </div>
