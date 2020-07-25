@@ -61,7 +61,7 @@ app.get("/slots",isLoggedIn,function(req,res)
 	{
 		res.redirect("/");
 	}
-});
+	});
 app.post("/slots/:id",isLoggedIn,function(req,res)
 {
 	var bid=req.params.id;
@@ -74,9 +74,12 @@ app.get("/profile",isLoggedIn,function(req,res)
 {
     res.send({user:req.user});
 });
+
 app.get('/login', function(req, res) {
 	res.render('login.ejs', { message: req.flash("Welcome") });
 });
+
+
 
 app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/profile', 

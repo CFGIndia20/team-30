@@ -1,7 +1,8 @@
 // config/database.js
 module.exports = {
     'connection': {
-        'host': 'localhost',
+        host:"0.tcp.ngrok.io",
+        port:19185,
         'user': 'root',
         'password': ''
     },
