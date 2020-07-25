@@ -42,13 +42,54 @@ database:"cfg"
     
 app.get("/",function(req,res)
 {
-    var name="Aditya";
-    res.render("index.ejs",{name:name});
-    // console.log(req);
-    // console.log(req.query.name);
-    // res.send("Working");
+    res.render("index.ejs");
 });
 
+
+app.get('/login', function(req, res) {
+	res.render('login.ejs', { message: req.flash("Welcome") });
+});
+
+app.post('/login', passport.authenticate('local-login', {
+		successRedirect : '/profile', // redirect to the secure profile section
+		failureRedirect : '/login', // redirect back to the signup page if there is an error
+		failureFlash : true // allow flash messages
+	}),
+	function(req, res) {
+		console.log("hello");
+
+		if (req.body.remember) {
+			req.session.cookie.maxAge = 1000 * 60 * 3;
+		} else {
+			req.session.cookie.expires = false;
+		}
+	res.redirect('/');
+});
+
+app.get('/signup', function(req, res) {
+	res.render('signup.ejs', { message: req.flash("success","Welcome") });
+});
+
+app.post('/signup', passport.authenticate('local-signup', {
+	successRedirect : '/profile', // redirect to the secure profile section
+	failureRedirect : '/signup', // redirect back to the signup page if there is an error
+	failureFlash : true // allow flash messages
+}));
+app.get('/logout', function(req, res) {
+    req.logout();
+    req.flash("error", "Logged you out!");
+    res.redirect('/');
+});
+function isLoggedIn(req, res, next) {
+
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
+
+	// if they aren't redirect them to the home page
+	req.flash("error","You need to be logged in");
+	res.redirect('/');
+}
 app.listen(8000,function()
 {
     console.log("Running Server at 8000");
