@@ -10,6 +10,16 @@
 	</style>
 </head>
 <body>
+    <% if(error&&error.length>0){%>
+      <div class="alert alert-danger" role="alert">
+          <%=error%>
+      </div>
+      <%}%>
+      <% if(success&&success.length>0){%>
+      <div class="alert alert-success" role="alert">
+          <%=success%>
+      </div>
+  <%}%>
     <div class="container">
         <div class="col-sm-6 col-sm-offset-3">
             <h1><span class="fa fa-sign-in"></span> Select Slots</h1>
@@ -35,8 +45,8 @@
                         <td><%= result.end_time %></td>
                        <td><%= result.trainer_id %></td>
                        <td><%= result.venue %></td>
-                        <form id="slots" method="POST" action="/slots">
-                        <td><button type="button" class="btn btn-warning">Select</button></td>
+                        <form id="slots" method="POST" action="/slots/<%=result.id%>">
+                        <td><button type="submit" class="btn btn-warning">Select</button></td>
                         </form>
                       </tr>
                       <%  }); %>
