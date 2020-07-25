@@ -7,15 +7,18 @@ var express     = require("express"),
     flash       = require("connect-flash");
     mysql       = require('mysql'),
     morgan = require('morgan'),
+    cors        = require('cors'),
     session  = require('express-session'),
     cookieParser = require('cookie-parser');
 
 require('./config/passport')(passport);
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({extended: true}));
-// app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/public"));
+app.set('view engine', 'ejs');
 app.use(methodOverride("_method"));
-
+app.use(cors());
+app.use(morgan('dev'));
 app.use(session({
 	secret: 'vidyapathaisalwaysrunning',
 	resave: true,
@@ -39,10 +42,14 @@ database:"cfg"
     
 app.get("/",function(req,res)
 {
-    res.send("Working !!");
+    var name="Aditya";
+    res.render("index.ejs",{name:name});
+    // console.log(req);
+    // console.log(req.query.name);
+    // res.send("Working");
 });
 
-app.listen(9000,function()
+app.listen(8000,function()
 {
-    console.log("Running Server at 3000");
+    console.log("Running Server at 8000");
 });
