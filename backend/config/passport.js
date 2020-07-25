@@ -28,21 +28,22 @@ module.exports = function(passport) {
             passwordField : 'password',
             passReqToCallback : true
         },
-        function(req, username, password, done) {
+        function(req, username,password, done) {
             connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows) {
                 if (err)
                     return done(err);
                 if (rows.length) {
                     return done(null, false, req.flash("error", 'That username is already taken.'));
                 } else {
+                    role=req.body.role;
                     var newUserMysql = {
                         username: username,
                         password: bcrypt.hashSync(password, null, null),  // use the generateHash function in our user model
                         role:role
                     };
-
+                    // console.log(newUserMysql);
                     var insertQuery = "INSERT INTO users ( username, password, role) values (?,?,?)";
-                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password],newUserMysql.role,function(err, rows) {
+                    connection.query(insertQuery,[newUserMysql.username, newUserMysql.password,newUserMysql.role],function(err, rows) {
                         newUserMysql.id = rows.insertId;
 
                         return done(null, newUserMysql);
