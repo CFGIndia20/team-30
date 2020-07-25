@@ -48,7 +48,17 @@ app.get("/",function(req,res)
 		res.send(result);
 	});
 });
-
+app.get("/slots",function(req,res)
+{
+	conn.query("select * from batch,slot where batch.slot_id=slot.id",function(err,result)
+	{
+		res.send(result);
+	});
+});
+app.post("/slots",function(req,res)
+{
+	
+});	
 app.get("/profile",isLoggedIn,function(req,res)
 {
     res.send({user:req.user});
