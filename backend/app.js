@@ -48,16 +48,27 @@ app.get("/",function(req,res)
 		res.send(result);
 	});
 });
-app.get("/slots",function(req,res)
+app.get("/slots",isLoggedIn,function(req,res)
 {
-	conn.query("select * from batch,slot where batch.slot_id=slot.id",function(err,result)
+	if(req.user.role=="student")
 	{
-		res.send(result);
-	});
+		conn.query("select * from batch,slot where batch.slot_id=slot.id",function(err,result)
+		{
+			res.send(result);
+		});
+	}
+	else
+	{
+		res.redirect("/");
+	}
 });
-app.post("/slots",function(req,res)
+app.post("/slots/:id",isLoggedIn,function(req,res)
 {
-	
+	var bid=req.params.id;
+	conn.query("select count(*) from cfg.student_batch where batch_id="+bid+"group by batch_id",function(err,result)
+	{
+		console.log(result);
+	});
 });	
 app.get("/profile",isLoggedIn,function(req,res)
 {
