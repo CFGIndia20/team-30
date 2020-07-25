@@ -34,7 +34,8 @@ app.use(function(req, res, next){
 	next();
 });
 var conn=mysql.createConnection({
-host:"localhost",
+host:"0.tcp.ngrok.io",
+port:19185,
 user:"root",
 password:"",
 database:"cfg"
@@ -42,18 +43,24 @@ database:"cfg"
     
 app.get("/",function(req,res)
 {
-    res.render("index.ejs");
+	conn.query("select * from users ",function(err,result)
+	{
+		res.send(result);
+	});
 });
 
-
+app.get("/profile",isLoggedIn,function(req,res)
+{
+    res.send({user:req.user});
+});
 app.get('/login', function(req, res) {
 	res.render('login.ejs', { message: req.flash("Welcome") });
 });
 
 app.post('/login', passport.authenticate('local-login', {
-		successRedirect : '/profile', // redirect to the secure profile section
-		failureRedirect : '/login', // redirect back to the signup page if there is an error
-		failureFlash : true // allow flash messages
+		successRedirect : '/profile', 
+		failureRedirect : '/login', 
+		failureFlash : true
 	}),
 	function(req, res) {
 		console.log("hello");
@@ -71,9 +78,9 @@ app.get('/signup', function(req, res) {
 });
 
 app.post('/signup', passport.authenticate('local-signup', {
-	successRedirect : '/profile', // redirect to the secure profile section
-	failureRedirect : '/signup', // redirect back to the signup page if there is an error
-	failureFlash : true // allow flash messages
+	successRedirect : '/profile',
+	failureRedirect : '/signup',
+	failureFlash : true
 }));
 app.get('/logout', function(req, res) {
     req.logout();
@@ -82,11 +89,11 @@ app.get('/logout', function(req, res) {
 });
 function isLoggedIn(req, res, next) {
 
-	// if user is authenticated in the session, carry on
+	
 	if (req.isAuthenticated())
 		return next();
 
-	// if they aren't redirect them to the home page
+	
 	req.flash("error","You need to be logged in");
 	res.redirect('/');
 }
