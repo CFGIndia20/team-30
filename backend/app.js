@@ -106,7 +106,8 @@ app.post("/slots/:id",isLoggedIn,function(req,res)
 });	
 app.get("/profile",isLoggedIn,function(req,res)
 {
-    res.send({user:req.user});
+	// res.send({user:req.user});
+	res.render("profile.ejs");
 });
 
 app.get('/login', function(req, res) {
