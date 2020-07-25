@@ -41,9 +41,13 @@ password:"",
 database:"cfg"
 });
     
+// app.get("/",function(req,res)
+// {
+// 	res.render("index.ejs");
+// });
 app.get("/",function(req,res)
 {
-	res.render("index.ejs");
+	res.render("landing.ejs");
 });
 app.get("/slots",isLoggedIn,function(req,res)
 {
