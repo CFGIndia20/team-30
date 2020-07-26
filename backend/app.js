@@ -131,13 +131,16 @@ app.post('/login', passport.authenticate('local-login', {
 		}
 	res.redirect('/');
 });
-
+app.get("/test",function(req,res)
+{
+	res.render("testpage.ejs");
+});
 app.get('/signup', function(req, res) {
 	res.render('signup.ejs', { message: req.flash("success","Welcome") });
 });
 
 app.post('/signup', passport.authenticate('local-signup', {
-	successRedirect : '/profile',
+	successRedirect : '/test',
 	failureRedirect : '/signup',
 	failureFlash : true
 }));
