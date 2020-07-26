@@ -42,6 +42,7 @@ module.exports = function(passport) {
                         role:role
                     };
                     // console.log(newUserMysql);
+                    // console.log(newUserMysql);
                     var insertQuery = "INSERT INTO users ( username, password, role) values (?,?,?)";
                     connection.query(insertQuery,[newUserMysql.username, newUserMysql.password,newUserMysql.role],function(err, rows) {
                         newUserMysql.id = rows.insertId;
