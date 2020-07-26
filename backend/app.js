@@ -114,7 +114,7 @@ app.get("/profile",isLoggedIn,function(req,res)
 	// if(req.user.role=="student")
 	// 	res.render("testpage.ejs");
 	// else
-		console.log(res.statusCode);
+		// console.log(res.statusCode);
 		res.render("profile.ejs");
 });
 
