@@ -104,12 +104,17 @@ app.post("/slots/:id",isLoggedIn,function(req,res)
 		}
 	});
 });	
+app.get("/batches",function(req,res)
+{
+	res.render("batches.ejs");
+});
 app.get("/profile",isLoggedIn,function(req,res)
 {
 	// res.send({user:req.user});
-	if(req.user.role=="student")
-		res.render("testpage.ejs");
-	else
+	// if(req.user.role=="student")
+	// 	res.render("testpage.ejs");
+	// else
+		console.log(res.statusCode);
 		res.render("profile.ejs");
 });
 
