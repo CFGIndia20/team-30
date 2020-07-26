@@ -107,7 +107,10 @@ app.post("/slots/:id",isLoggedIn,function(req,res)
 app.get("/profile",isLoggedIn,function(req,res)
 {
 	// res.send({user:req.user});
-	res.render("profile.ejs");
+	if(req.user.role=="student")
+		res.render("testpage.ejs");
+	else
+		res.render("profile.ejs");
 });
 
 app.get('/login', function(req, res) {
@@ -140,7 +143,7 @@ app.get('/signup', function(req, res) {
 });
 
 app.post('/signup', passport.authenticate('local-signup', {
-	successRedirect : '/test',
+	successRedirect : '/profile',
 	failureRedirect : '/signup',
 	failureFlash : true
 }));
