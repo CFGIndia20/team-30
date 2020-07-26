@@ -1,0 +1,500 @@
+/*@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500&display=swap');*/
+
+/*General CSS*/
+
+:root{
+    --primary-color: #05668D;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+/*    font-family: "Lobster", cursive;*/
+    line-height: 1.4;
+}
+
+a{
+    text-decoration: none;
+}
+
+textarea{
+    resize: none;
+}
+.nice{
+    line-height: 1.6;
+    text-align: justify;
+}
+p{ margin: 0.75rem 0; }
+
+/*UTILITY CLASSES*/
+
+.container{
+    max-width: 1100px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    overflow: auto; /*hidden or auto as per u*/
+}
+
+.bg-light{
+    background: #F4F4F4;
+    color: #333;
+}
+
+.bg-dark{
+    background: #333;
+    color: #FFF;
+}
+
+.bg-primary{
+    background: var(--primary-color);
+    color: #FFF;
+}
+.top{
+    padding-top: 50px;
+}
+.py-1{ padding: 1.5rem 0; }
+.py-2{ padding: 2rem 0; }
+.py-3{ padding: 3rem 0; }
+
+.px-1{ padding: 0 1.5rem; }
+.px-2{ padding: 0 2rem; }
+.px-3{ padding: 0 3rem; }
+
+.p-1{ padding: 1.5rem; }
+.p-2{ padding: 2rem; }
+.p-3{ padding: 3rem; }
+
+.l-heading{
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    font-weight: 300;
+}
+
+.m-heading{
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    font-weight: 400;
+    color: #000;
+}
+.white{
+    color: #fff;
+}
+.lead{
+    font-size: 1.3rem;
+    font-weight: 200;
+    margin-bottom: 2rem;
+}
+.s-head{
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--primary-color);
+}
+.text-primary{ color: var(--primary-color); }
+
+.text-center{ text-align: center; }
+
+.content{
+    line-height: 1.6;
+}
+.bold{
+    font-weight: 700;
+}
+.btn{
+    display: inline-block;
+    color: #FFF;
+    background: var(--primary-color);
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    border: none; /*useful with button tag*/
+}
+.black{
+    color: #000;
+}
+.btn-dark{ background: #333; }
+.content{
+    width:50%;
+    float:right;
+}
+.image{
+    float:left;
+    margin-top: 30px;
+}
+.btn:hover{
+    cursor: pointer;
+    background: #000;
+    transition: background .3s;
+}
+
+.list{
+    margin: 0 0.75rem 0;
+    list-style: none;
+}
+
+.list li{
+    padding: 0.5rem 0;
+    border-bottom: #444 dotted 1px;
+}
+
+
+/*NAVBAR*/
+
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    background: #333;
+    color: #FFF;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+#navbar ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+#navbar ul li a{
+    color: #FFF;
+    padding: 0.75rem;
+    margin: 0 0.25rem;
+}
+
+#navbar ul li a:hover{
+    background: var(--primary-color);
+    border-radius: 5px;
+    transition: background .3s;
+}
+
+
+/*SHOWCASE SECTION*/
+
+#showcase{
+    background: #333 url('images/IMG11.jpeg') no-repeat center center/cover;
+    height: 100vh;
+    color: #FFF;
+}
+
+#showcase .showcase-content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    
+    /*Overlay*/
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/*SECTION: Temperature We Do?*/
+
+#Temperature .items{
+    display: flex;
+    padding: 1rem;
+}
+
+#Temperature .items .item{
+    text-align: center;
+    padding: 1rem;
+    flex: 1;
+}
+
+#Temperature .items .item i{
+    background: var(--primary-color);
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    border-radius: 100%;
+    margin-bottom: 1rem;
+}
+
+#Temperature .items .item:hover{
+    background: var(--primary-color);
+    color: #F4F4F4;
+    transition: background .3s, color .3s;
+    cursor: pointer;
+}
+
+#Temperature .items .item:hover i{
+    background: #F4F4F4;
+    color: var(--primary-color);
+}
+
+/*SECTION: lighting Are We?*/
+
+#lighting{
+    display: flex;
+}
+
+#lighting>div{
+    flex: 1;
+}
+
+#lighting .lighting-img{
+    background: url('images/people.jpg') no-repeat center center/cover;
+}
+
+/*SECTION: Our Clients*/
+
+#clients .items{
+    display: flex;
+}
+
+#clients .items img{
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+/*SECTION: security*/
+    
+
+/*
+#security{
+    display: flex;
+}
+
+#security .security-form, #security .map{
+    flex: 1;
+}
+*/
+
+#security .form-group{
+    margin-bottom: 0.75rem;}
+
+#security .security-form label{
+    display: block;
+}
+
+
+
+#security .security-form input,
+#security .security-form textarea{
+    width: 100%;
+    padding: 0.5rem;
+}
+
+/*Scrollbars*/
+
+::-webkit-scrollbar{
+    width: 12px;
+}
+
+::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive{
+    background: rgba(147, 203, 82, 0.4);
+}
+
+::selection{
+    background: rgba(147, 203, 82, 0.6);
+}
+
+/*Mobile Friendly Media Queries*/
+
+@media(max-width: 550px){
+    #navbar{
+        flex-direction: column;
+        align-items: center;
+    }
+    #navbar .logo{
+        margin-bottom: 0.75rem;
+    }
+    #navbar ul{
+        padding: 0.5rem;
+    }
+    .l-heading{
+        font-size: 3rem;
+    }
+    .m-heading{
+        font-size: 2rem;
+    }
+    .lead{
+        font-size: 1.1rem;
+    }
+    #showcase .showcase-content{
+        top: 115px;
+    }
+    #Temperature .items{
+        flex-direction: column;
+    }
+    #lighting{
+        flex-direction: column-reverse;
+    }
+    #lighting>div{
+        flex: none;
+    }
+    #lighting .lighting-img{
+        height: 300px;
+    }
+    #clients .items>div:last-child{
+        display: none;
+    }
+    #security{
+        flex-direction: column;
+    }
+    #security .map, #security .security-form{
+        flex: none;
+    }
+    #security .map{
+        height: 300px;
+    }
+}
+
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+.content1 {
+  /*position: fixed;*/
+  bottom: 0;
+  /*background: rgba(0, 0, 0, 0.5);*/
+  color: black;
+  width: 100%;
+  padding: 20px;
+    opacity: 0.6;
+    font-family: "Roboto","sans";
+}
+
+
+div.box{
+    text-align: center;
+    margin: 24px;
+    padding: 36px 24px 40px 24px;
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15),
+        0 2px 3px 0 rgba(0,0,0,.1);
+}
+
+.row{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.row::after{
+    display: table;
+    clear: both;
+    content: "";
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
