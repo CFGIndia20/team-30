@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>Profile Page</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The Nudge Project</title>
         <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> load bootstrap css -->
         <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> load fontawesome -->
+        <link rel="stylesheet" href="/stylesheets/font-awesome2.css">
+        <link rel="stylesheet" href="/stylesheets/materialize2.css">
+        <link rel="stylesheet" href="/stylesheets/styless2.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
 <body>
@@ -23,6 +27,7 @@
                     <li><a href="#">Signed In As <%= currentUser.username %></a></li>
                     <li><a href="/logout">Logout</a></li>
                     <li><a href="/profile">Account</a></li>
+                    <li><a href="/slots">Slots</a></li>
                 <% } %>
             </ul>
         </div>
@@ -38,5 +43,48 @@
         <%=success%>
     </div>
 <%}%>
+<div class="card">
+    <img src="/assets/yuna.jpg" alt="John" style="width:100% size="300px">
+    <h1>John Doe</h1>
+    <p class="title">Student</p>
+    <p>Batch 3</p>
+    <div style="margin: 24px 0;">
+      <a href="#"><i class="fa fa-dribbble"></i></a> 
+      <a href="#"><i class="fa fa-twitter"></i></a>  
+      <a href="#"><i class="fa fa-linkedin"></i></a>  
+      <a href="#"><i class="fa fa-facebook"></i></a> 
+    </div>
+    <p><button>Contact</button></p>
+  </div>
+  <br>
+  <br>
+  <h3 style="text-align: center">Attendance Record</h3>
+  <div id="piechart" ></div>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Present', 6],
+    ['Absent',4]
+  ]);
+  
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Attendance Record', 'width':550, 'height':400,colors: ['#14b820','#b82312']};
+    
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
+  </script>
+  
+  </body>
+  
+  </html>
 </body>
 </html>

@@ -76,9 +76,9 @@ app.post("/slots/:id",isLoggedIn,function(req,res)
 		{
 			conn.query("insert into student_batch (batch_id,student_username) values ("+bid+"\""+req.user.username+"\")",function(err,result)
 			{
-					req.flash("sucess","Slot is  Allocated ");
 					console.log("Slot Allocated ");
-					res.redirect("/");
+					req.flash("sucess","Slot is  Allocated ");
+					res.redirect("/profile");
 			});
 		}
 		else
@@ -90,9 +90,9 @@ app.post("/slots/:id",isLoggedIn,function(req,res)
 				var sql1="insert into student_batch (batch_id,student_username) values ("+bid+",\""+req.user.username+"\")";
 				conn.query(sql1,function(err,result2)
 				{
-					req.flash("sucess","Slot is  Allocated ");
 					console.log("Slot Allocated ");
-					res.redirect("/");
+					req.flash("sucess","Slot is  Allocated ");
+					res.redirect("/profile");
 
 				});
 			}
