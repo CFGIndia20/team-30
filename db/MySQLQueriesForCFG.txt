@@ -1,0 +1,71 @@
+CREATE DATABASE cfg;
+
+USE cfg;
+
+CREATE TABLE `users` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` char(60) NOT NULL,
+  `role` char(60) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1
+
+CREATE TABLE `admin` (
+  `username` varchar(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `ph_no` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  PRIMARY KEY (`username`),
+  CONSTRAINT `fk_2200` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `trainer` (
+  `username` varchar(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `ph_no` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  PRIMARY KEY (`username`),
+  CONSTRAINT `fk_1200` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `student` (
+  `username` varchar(20) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `test_id` int(11) DEFAULT NULL,
+  `ph_no` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL,
+  `test_name` varchar(50) NOT NULL,
+  `test_score` int(11) NOT NULL,
+  `eligible` varchar(5) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `batch` (
+  `id` int(11) NOT NULL,
+  `trainer_id` varchar(45) NOT NULL,
+  `venue` varchar(50) NOT NULL,
+  `slot_id` varchar(45) NOT NULL,
+  `start_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `slot` (
+  `id` int(11) NOT NULL,
+  `start_time` varchar(10) DEFAULT NULL,
+  `end_time` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `student_batch` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `batch_id` int(11) DEFAULT NULL,
+  `student_username` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1
